@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFo
 parser.add_argument('--cuda', action='store_true', default=False, help='Enables CUDA training')
 
 parser.add_argument('--modelpath', type=str, help='Path to saved model', required=True)
-parser.add_argument('--datapath', type=str, default='/projects/cc/khqx705/TinyPieceOfTox21/test.csv.gz', help='Testing dataset path')
+parser.add_argument('--datapath', type=str, default='toydata/piece-of-tox21-test.csv.gz', help='Testing dataset path')
 parser.add_argument('--score', type=str, choices=['roc-auc', 'pr-auc', 'MSE', 'RMSE'], required=True)
 
 
