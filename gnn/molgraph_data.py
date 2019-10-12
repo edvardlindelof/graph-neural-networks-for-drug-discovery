@@ -20,10 +20,10 @@ class MolGraphDataset(data.Dataset):
 
     Args:
         path
-        inference: set to True if dataset contains no target values
+        prediction: set to True if dataset contains no target values
     """
 
-    def __init__(self, path, inference=False):
+    def __init__(self, path, prediction=False):
         with gzip.open(path, 'r') as file:
             self.header_cols = file.readline().decode('utf-8')[:-2].split('\t')
         n_cols = len(self.header_cols)
@@ -32,7 +32,7 @@ class MolGraphDataset(data.Dataset):
         self.comments = np.genfromtxt(path, delimiter='\t', skip_header=1, usecols=[0], dtype=np.str, comments=None)
         # comments=None because default is "#", that some smiles contain
         self.smiles = np.genfromtxt(path, delimiter='\t', skip_header=1, usecols=[1], dtype=np.str, comments=None)
-        if inference:
+        if prediction:
             self.targets = np.empty((len(self.smiles), n_cols - 2))  # may be used to figure out number of targets etc
         else:
             self.targets = np.genfromtxt(path, delimiter='\t', skip_header=1, usecols=range(2, n_cols), comments=None).reshape(-1, n_cols - 2)

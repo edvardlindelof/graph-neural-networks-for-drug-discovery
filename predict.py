@@ -27,7 +27,7 @@ if __name__ == '__main__':
             net = net.cpu()
         net.eval()
 
-        dataset = MolGraphDataset(args.datapath, inference=True)
+        dataset = MolGraphDataset(args.datapath, prediction=True)
         dataloader = DataLoader(dataset, batch_size=50, collate_fn=molgraph_collate_fn)
 
         batch_outputs = []

@@ -41,7 +41,7 @@ Use the --savemodel flag when starting the training:
 
 After training is finished, a file in savedmodels/ will contain the model in the state it was when it showed the highest validation scores. Use it to make predictions on new data by doing:
 
-    $ python infer.py --modelpath savedmodels/GGNN2019-02-22\ 12\:16\:17.432742 --score roc-auc --datapath toydata/piece-of-tox21-train-for-inference.csv.gz
+    $ python predict.py --modelpath savedmodels/GGNN2019-02-22\ 12\:16\:17.432742 --score roc-auc --datapath toydata/piece-of-tox21-train-for-prediction.csv.gz
 
 (Replace GGNN2019-02-22\ 12\:16\:17.432742 with your newly saved file.) Note that the same --score argument as used when training need to be supplied for correct output scaling. The predictions are printed to stdout in csv format. To store it to a file, add e.g. > predictions.csv to the end of the command.
 
