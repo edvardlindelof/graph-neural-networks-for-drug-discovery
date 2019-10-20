@@ -1,5 +1,13 @@
 # Property Prediction with Neural Networks on Raw Molecular Graphs
 
+This code is the basis of two works carried out at AstraZeneca:
+
+* My master's thesis [Deep Learning for Drug Discovery: Property Prediction with Neural Networks on Raw Molecular Graphs](https://odr.chalmers.se/handle/20.500.12380/256629?locale=en)
+* Me and Michael Withnall's paper [Building Attention and Edge Convolution Neural Networks for Bioactivity and Physical-Chemical Property Prediction](https://chemrxiv.org/articles/Building_Attention_and_Edge_Convolution_Neural_Networks_for_Bioactivity_and_Physical-Chemical_Property_Prediction/9873599), the three models mentioned in the paper refer to the models of the code and thesis as follows:
+  * SELU-MPNN -> `GGNN`
+  * AMPNN -> `AttentionGGNN`
+  * EMNN -> `EMN`
+The thesis is richer in technical detail but is not peer reviewed and contains an erroneously generated result for the ESOL dataset. The paper contains a more thorough and carefully generated collection of results.
 
 ## Install dependencies
 
