@@ -7,6 +7,7 @@ This code is the basis of two works carried out at AstraZeneca:
   * SELU-MPNN -> `GGNN`
   * AMPNN -> `AttentionGGNN`
   * EMNN -> `EMN`
+
 The thesis is richer in technical detail but is not peer reviewed and contains an erroneously generated result for the ESOL dataset. The paper contains a more thorough and carefully generated collection of results.
 
 
