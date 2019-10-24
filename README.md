@@ -20,6 +20,8 @@ The four most important related papers are:
 * [Graph Attention Networks](https://arxiv.org/abs/1710.10903) presents a model for node classification with a message *aggregation* step that does not fit within the MPNN framework but does fit within the slightly more general framework implemented as the abstract `AggregationMPNN` class, and may be seen as a computationally lighter variant to that of the present work's attention models
 * [Analyzing Learned Molecular Representations for Property Prediction](https://arxiv.org/abs/1904.01561) presents a modification of the MPNN framework investigated in parallel in my thesis work, namely to message pass in the graph defined by the *edge-adjacency* matrix before aggregating the states of the directed edges into the corresponding node to be able to carry out an MPNN-style readout step
 
+The last-mentioned paper's model, as well as similar models that are not restricted to summation in the message aggregation step, can be implemented by extending the abstract class `EMN`.
+
 
 ## Install dependencies
 
