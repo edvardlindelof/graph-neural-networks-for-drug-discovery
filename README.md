@@ -17,7 +17,7 @@ The four most important related papers are:
 
 * [Gated Graph Sequence Neural Networks](https://arxiv.org/abs/1511.05493) presents a graph neural network used as baseline in the present work as well as in that of the paper below
 * [Neural Message Passing for Quantum Chemistry](https://arxiv.org/abs/1704.01212) defines the *MPNN* framework for graph neural networks, implemented in this code as the abstract class `SummationMPNN`
-* [Graph Attention Networks](https://arxiv.org/abs/1710.10903) presents a model that does not fit within the MPNN framework but does fit within the slightly more general framework implemented as the abstract `AggregationMPNN` class, and whose message aggregation step may be seen as a computationally lighter variant to that of the presented attention models
+* [Graph Attention Networks](https://arxiv.org/abs/1710.10903) presents a model for node classification with a message *aggregation* step that does not fit within the MPNN framework but does fit within the slightly more general framework implemented as the abstract `AggregationMPNN` class, and may be seen as a computationally lighter variant to that of the present work's attention models
 * [Analyzing Learned Molecular Representations for Property Prediction](https://arxiv.org/abs/1904.01561) presents a modification of the MPNN framework investigated in parallel in my thesis work, namely to message pass in the graph defined by the *edge-adjacency* matrix before aggregating the states of the directed edges into the corresponding node to be able to carry out an MPNN-style readout step
 
 
