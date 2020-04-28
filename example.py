@@ -13,7 +13,7 @@ class ExampleAttentionMPNN(AggregationMPNN):
 
         self.message_att_weight = nn.Linear(node_features, 1)
         self.message_emb_weight = nn.Linear(node_features, node_features)
-        self.out_weight = nn.Linear(node_features, out_features)
+        #self.out_weight = nn.Linear(node_features, out_features)
 
     def aggregate_message(self, nodes, node_neighbours, edges, mask):
         neighbourhood = torch.cat([nodes.unsqueeze(1), node_neighbours], dim=1)
@@ -33,8 +33,9 @@ class ExampleAttentionMPNN(AggregationMPNN):
 
     def readout(self, hidden_nodes, input_nodes, node_mask):
         graph_embedding = torch.sum(hidden_nodes, dim=1)
-        output = self.out_weight(graph_embedding)
-        return output
+        #output = self.out_weight(graph_embedding)
+        #return output
+        return graph_embedding
 
 
 if __name__ == '__main__':
@@ -45,7 +46,9 @@ if __name__ == '__main__':
     print('instantiating ExampleAttentionMPNN')
     # 75 and 4 corresponds to MolGraphDataset, 1 corresponds to ESOL
     net = ExampleAttentionMPNN(node_features=75, edge_features=4, out_features=1)
-    optimizer = optim.Adam(net.parameters(), lr=2e-5)
+    out_weight = nn.Linear(75, 1)
+    parameters = list(net.parameters()) + list(out_weight.parameters())
+    optimizer = optim.Adam(parameters)
     criterion = nn.MSELoss()
 
     print('starting training')
@@ -53,10 +56,13 @@ if __name__ == '__main__':
         for i_batch, batch in enumerate(train_dataloader):
             adjacency, nodes, edges, target = batch
             optimizer.zero_grad()
-            output = net(adjacency, nodes, edges)
+            embedding = net(adjacency, nodes, edges)
+            output = out_weight(embedding)
             loss = criterion(output, target)
             loss.backward()
-            torch.nn.utils.clip_grad_value_(net.parameters(), 5.0)
+            torch.nn.utils.clip_grad_value_(parameters, 5.0)
             optimizer.step()
 
         print('epoch: {}, training MSE: {}'.format(epoch + 1, loss))
+
+    torch.save(net, 'trainedembedder')
